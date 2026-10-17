@@ -10,7 +10,8 @@ namespace ProductsApi.Handlers
         private readonly ILogger<GlobalExceptionHandler> _logger;
         public GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger) => _logger = logger;
 
-        public async ValueTask<bool> TryHandleAsync(HttpContext context, Exception ex, CancellationToken ct)
+        public async ValueTask<bool> TryHandleAsync(
+            HttpContext context, Exception ex, CancellationToken ct)
         {
             var (status, title) = ex switch
             {
@@ -35,3 +36,4 @@ namespace ProductsApi.Handlers
         }
     }
 }
+

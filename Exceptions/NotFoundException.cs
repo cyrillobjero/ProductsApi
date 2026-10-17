@@ -1,4 +1,4 @@
-﻿namespace ProductsApi
+﻿namespace ProductsApi.Exceptions
 {
     public class NotFoundException : Exception
     {

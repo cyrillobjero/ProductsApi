@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Products Client</title>
+</head>
+<body>
+
+    <h1>Products API Client</h1>
+
+    <h2>Register</h2>
+
+    <input id="regUser" placeholder="Username">
+
+    <input id="regPass"
+           type="password"
+           placeholder="Password">
+
+    <button onclick="register()">
+        Register
+    </button>
+
+    <hr>
+
+    <h2>Login</h2>
+
+    <input id="loginUser"
+           placeholder="Username">
+
+    <input id="loginPass"
+           type="password"
+           placeholder="Password">
+
+    <button onclick="login()">
+        Login
+    </button>
+
+    <p id="username"></p>
+
+    <hr>
+
+    <h2>Add Product</h2>
+
+    <input id="productName"
+           placeholder="Product Name">
+
+    <input id="productPrice"
+           placeholder="Price">
+
+    <input id="productSku"
+           placeholder="SKU (ABC-1234)">
+
+    <button onclick="addProduct()">
+        Add Product
+    </button>
+
+    <button onclick="getProducts()">
+        Get Products
+    </button>
+
+    <button onclick="logout()">
+        Logout
+    </button>
+
+    <pre id="output"></pre>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

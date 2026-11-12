@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProductsApi.Models;
 using ProductsApi.Exceptions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProductsApi.Controllers
 {
@@ -12,6 +13,7 @@ namespace ProductsApi.Controllers
 
         // GET all with paging
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult GetAll([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
             var totalItems = products.Count;
@@ -30,6 +32,7 @@ namespace ProductsApi.Controllers
 
         // GET by id
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public IActionResult GetById(int id)
         {
             var product = products.FirstOrDefault(p => products.IndexOf(p) + 1 == id);
@@ -39,6 +42,7 @@ namespace ProductsApi.Controllers
 
         // POST
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create(CreateProductRequest request)
         {
             if (products.Any(p => p.Sku == request.Sku))
@@ -51,6 +55,7 @@ namespace ProductsApi.Controllers
 
         // PUT
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Update(int id, UpdateProductRequest request)
         {
             var product = products.FirstOrDefault(p => products.IndexOf(p) + 1 == id);
@@ -65,6 +70,7 @@ namespace ProductsApi.Controllers
 
         // DELETE
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             var product = products.FirstOrDefault(p => products.IndexOf(p) + 1 == id);
